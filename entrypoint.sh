@@ -7,7 +7,7 @@ GENERATOR=$4
 
 if [ -n "$URL" ]; then
   echo "Downloading the OpenAPI specification from the provided URL..."
-  curl -s $URL -o spec.json
+  curl -s -k $URL -o spec.json
 fi
 
 if [ -n "$SPEC_FILE" ]; then
