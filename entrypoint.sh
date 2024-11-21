@@ -75,8 +75,6 @@ if [ -n "$OUTPUT_DIR" ]; then
     echo "Error: Invalid output directory specified."
     exit 1
   fi
-else
-  OUTPUT_DIR="./docs"
 fi
 
 # Validate GENERATOR
@@ -85,8 +83,6 @@ if [ -n "$GENERATOR" ]; then
     echo "Error: Invalid generator specified."
     exit 1
   fi
-else
-  GENERATOR="html2"
 fi
 
 echo "Generating documentation with OpenAPI Generator..."
