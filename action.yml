@@ -1,6 +1,9 @@
 name: 'OpenAPI Client Generator Action'
 description: 'Generates OpenAPI documentation using OpenAPI Generator'
 author: 'diegoara96'
+branding:
+  icon: 'book-open'
+  color: 'green'
 inputs:
   url:
     description: 'The URL of the backend API to obtain the OpenAPI specification (optional).'
