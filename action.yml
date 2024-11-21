@@ -18,5 +18,4 @@ inputs:
     default: 'html2'  # Default to 'html2' if no value is provided
 runs:
   using: 'docker'
-  image: 'ubuntu:latest'  # O usa un contenedor que tenga todas las dependencias necesarias
-  entrypoint: ['bash', '/entrypoint.sh']  # Este es el script que ejecutará la acción
+  image: 'Dockerfile'
