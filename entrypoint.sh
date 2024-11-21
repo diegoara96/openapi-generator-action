@@ -1,13 +1,15 @@
 #!/bin/bash
-
+  apt update
+  apt install -y  jq
+  # Descargar OpenAPI Generator CLI
+  curl https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/bin/utils/openapi-generator-cli.sh > ~/bin/openapitools/openapi-generator-cli
+  # Hacer que el script descargado sea ejecutable
+  chmod u+x ~/bin/openapitools/openapi-generator-cli
+  # Añadir el directorio de OpenAPI Generator al PATH
+  export PATH=$PATH:~/bin/openapitools/
 # Si se proporciona una URL de backend, descargar la especificación JSON
 if [ -n "$INPUT_URL" ]; then
   echo "Descargando la especificación OpenAPI desde la URL proporcionada..."
-  
-  # Instalar dependencias solo si es necesario (solo si se usa la URL)
-  apt update
-  apt install -y curl jq
-  
   # Descargar la especificación OpenAPI usando curl
   curl -s $INPUT_URL -o spec.json
 fi
