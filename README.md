@@ -1,7 +1,3 @@
-¡Claro! Aquí tienes un ejemplo de cómo debería lucir el archivo `README.md` para esta nueva versión de la acción, con los cambios que mencionaste (permitir usar una URL o un archivo JSON como entrada):
-
----
-
 # OpenAPI Generator Action
 
 Esta acción de GitHub permite generar documentación OpenAPI en formato HTML (o cualquier otro formato soportado por OpenAPI Generator) a partir de una especificación OpenAPI. Puedes proporcionar la especificación a través de una URL (para obtenerla desde un backend) o a partir de un archivo JSON ya existente.
