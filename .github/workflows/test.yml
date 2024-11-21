@@ -25,6 +25,7 @@ jobs:
           generator: 'html'
 
       - name: Generate OpenAPI documentation from json with invalid generator
+        id: invalid-generator
         uses: ./
         with:
           spec-file: 'spec.json'
