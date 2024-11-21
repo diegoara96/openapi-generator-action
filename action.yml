@@ -1,19 +1,19 @@
 name: 'OpenAPI Generator Action'
-description: 'Genera documentación OpenAPI usando OpenAPI Generator'
+description: 'Generates OpenAPI documentation using OpenAPI Generator'
 author: 'diegoara96'
 inputs:
   url:
-    description: 'La URL de la API backend para obtener la especificación OpenAPI (opcional).'
+    description: 'The URL of the backend API to obtain the OpenAPI specification (optional).'
     required: false
   spec-file:
-    description: 'El archivo JSON que contiene la especificación OpenAPI (opcional).'
+    description: 'The JSON file containing the OpenAPI specification (optional).'
     required: false
   output-dir:
-    description: 'El directorio donde guardar la documentación generada.'
+    description: 'The directory where the generated documentation will be saved.'
     required: false
     default: './docs'
   generator:
-    description: 'El generador que se utilizará para generar la documentación (e.g., html2, markdown, etc.).'
+    description: 'The generator to be used for generating the documentation (html, html2, markdown, etc.).'
     required: false
     default: 'html2'  # Default to 'html2' if no value is provided
 runs:
