@@ -1,39 +1,39 @@
 # OpenAPI Generator Action
 
-Esta acción de GitHub permite generar documentación OpenAPI en formato HTML (o cualquier otro formato soportado por OpenAPI Generator) a partir de una especificación OpenAPI. Puedes proporcionar la especificación a través de una URL (para obtenerla desde un backend) o a partir de un archivo JSON ya existente.
+This GitHub Action generates OpenAPI documentation in HTML format (or any other format supported by OpenAPI Generator) from an OpenAPI specification. You can provide the specification via a URL (to fetch it from a backend) or from an existing JSON file.
 
-## Entrada
+## Inputs
 
-### `backend-url` (Opcional)
-- **Descripción**: La URL desde donde se puede obtener la especificación OpenAPI (por ejemplo, `http://localhost:8090/v3/api-docs`).
-- **Valor por defecto**: Ninguno.
-- **Requerido**: No.
-- **Comportamiento**: Si se proporciona una URL, la acción descargará la especificación desde esa URL.
+### `url` (Optional)
+- **Description**: The URL from which the OpenAPI specification can be obtained (e.g., `http://localhost:8090/v3/api-docs`).
+- **Default**: None.
+- **Required**: No.
+- **Behavior**: If a URL is provided, the action will download the specification from that URL.
 
-### `spec-file` (Opcional)
-- **Descripción**: Ruta al archivo JSON que contiene la especificación OpenAPI.
-- **Valor por defecto**: Ninguno.
-- **Requerido**: No.
-- **Comportamiento**: Si se proporciona un archivo JSON, la acción utilizará ese archivo directamente, sin descargar nada.
+### `spec-file` (Optional)
+- **Description**: Path to the JSON file containing the OpenAPI specification.
+- **Default**: None.
+- **Required**: No.
+- **Behavior**: If a JSON file is provided, the action will use that file directly without downloading anything.
 
 ### `output-dir`
-- **Descripción**: El directorio donde se generarán los archivos de documentación.
-- **Valor por defecto**: `./docs`
-- **Requerido**: No.
+- **Description**: The directory where the generated documentation will be saved.
+- **Default**: `./docs`
+- **Required**: No.
 
 ### `generator`
-- **Descripción**: El generador que se utilizará para generar la documentación. Los valores posibles incluyen `html2`, `markdown`, `pdf`, etc. Por defecto se usará `html2`.
-- **Valor por defecto**: `html2`
-- **Requerido**: No.
+- **Description**: The generator to be used for generating the documentation. Possible values include `html2`, `markdown`, `pdf`, etc. Defaults to `html2`.
+- **Default**: `html2`
+- **Required**: No.
 
-## Ejemplo de uso
+## Usage Example
 
-### Usando una URL
+### Using a URL
 
-Si prefieres que la acción descargue automáticamente la especificación desde una URL, usa el siguiente ejemplo:
+If you prefer the action to automatically download the specification from a URL, use the following example:
 
 ```yaml
-name: 'Generar Documentación OpenAPI'
+name: 'Generate OpenAPI Documentation'
 
 on:
   push:
@@ -44,23 +44,23 @@ jobs:
   generate-docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout del código
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Generar documentación OpenAPI desde URL
-        uses: <tu-usuario>/<tu-repo>@v1
+      - name: Generate OpenAPI documentation from URL
+        uses: diegoara96/openapi-generator-action@v1
         with:
-          backend-url: 'http://backend:8090/v3/api-docs'  # URL de la especificación
+          url: 'http://backend:8090/v3/api-docs'
           output-dir: './generated-docs'
           generator: 'html2'
 ```
 
-### Usando un archivo JSON
+### Using a JSON File
 
-Si ya tienes un archivo JSON con la especificación OpenAPI, puedes usarlo directamente como en el siguiente ejemplo:
+If you already have a JSON file with the OpenAPI specification, you can use it directly as in the following example:
 
 ```yaml
-name: 'Generar Documentación OpenAPI'
+name: 'Generate OpenAPI Documentation'
 
 on:
   push:
@@ -71,23 +71,18 @@ jobs:
   generate-docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout del código
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Generar documentación OpenAPI desde archivo JSON
-        uses: <tu-usuario>/<tu-repo>@v1
+      - name: Generate OpenAPI documentation from JSON file
+        uses: diegoara96/openapi-generator-action@v1
         with:
-          spec-file: './spec.json'  # Archivo JSON de la especificación OpenAPI
+          spec-file: './spec.json'
           output-dir: './generated-docs'
           generator: 'html2'
 ```
 
-### Notas
-
-- Si se proporcionan tanto `backend-url` como `spec-file`, la acción priorizará el archivo JSON (`spec-file`).
-- Si no se proporciona ni una URL ni un archivo JSON, la acción fallará y mostrará un mensaje de error.
-- El valor por defecto para el generador es `html2`, pero puedes cambiarlo a otro tipo de generador compatible con OpenAPI Generator, como `markdown`, `html`, `pdf`, etc.
-
-## Requisitos
-
-- La acción instalará `curl`, `jq` y otras dependencias necesarias solo si se usa la URL para descargar la especificación. Si se usa un archivo JSON, no se instalarán herramientas adicionales.
+### Notes
+If both url and spec-file are provided, the action will prioritize the JSON file (spec-file).
+If neither a URL nor a JSON file is provided, the action will fail and display an error message.
+The default value for the generator is html2, but you can change it to another generator type supported by OpenAPI Generator, such as markdown, html, pdf, etc.
