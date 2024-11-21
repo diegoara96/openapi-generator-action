@@ -34,4 +34,3 @@ jobs:
       - name: Check if generator was invalid
         if: steps.invalid-generator.outcome == 'success'
         run: exit 1
-
