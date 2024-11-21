@@ -60,7 +60,7 @@ if [ -n "$SPEC_FILE" ]; then
     exit 1
   fi
   echo "Using the provided JSON file: $SPEC_FILE"
-  cp "$SPEC_FILE" spec.json
+  cp "$SPEC_FILE" spec.json > /dev/null 2>&1
 fi
 
 # Ensure at least one of URL or SPEC_FILE is provided
@@ -90,4 +90,4 @@ else
 fi
 
 echo "Generating documentation with OpenAPI Generator..."
-openapi-generator-cli generate -i spec.json -g "$GENERATOR" -o "$OUTPUT_DIR"
+openapi-generator-cli generate -i spec.json -g "$GENERATOR" -o "$OUTPUT_DIR" > /dev/null
