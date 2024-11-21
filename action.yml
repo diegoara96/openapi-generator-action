@@ -1,0 +1,20 @@
+name: 'OpenAPI Generator Action'
+description: 'Generate OpenAPI documentation using OpenAPI Generator'
+author: 'diegoara96'
+inputs:
+  url:
+    description: 'The API URL to obtain the OpenAPI specification.'
+    required: true
+    default: 'http://localhost:8090/v3/api-docs'
+  output-dir:
+    description: 'The directory where to save the generated documentation.'
+    required: false
+    default: './docs'
+  generator:
+    description: 'El generador que se utilizará para generar la documentación (e.g., html2, markdown, etc.).'
+    required: false
+    default: 'html2'  # Default to 'html2' if no value is provided  
+runs:
+  using: 'docker'
+  image: 'ubuntu:latest'
+  entrypoint: ['bash', '/entrypoint.sh']  # Este es el script que ejecutará la acción
