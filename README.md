@@ -95,20 +95,3 @@ jobs:
 ## Requisitos
 
 - La acción instalará `curl`, `jq` y otras dependencias necesarias solo si se usa la URL para descargar la especificación. Si se usa un archivo JSON, no se instalarán herramientas adicionales.
-
-## Licencia
-
-Este proyecto está licenciado bajo la MIT License.
-
----
-
-### Explicación del `README.md`
-
-- **Introducción**: Se explica de manera general qué hace la acción y qué entradas acepta.
-- **Entradas**: Detalla los parámetros `backend-url`, `spec-file`, `output-dir`, y `generator`, indicando si son obligatorios y su valor por defecto.
-- **Ejemplos**: Proporciona ejemplos de uso para la acción, tanto usando una URL como un archivo JSON.
-- **Notas adicionales**: Aclara cómo la acción maneja los casos en los que se proporcionan tanto una URL como un archivo JSON, y qué sucede si no se proporciona ninguno.
-- **Requisitos**: Explica que no se instalarán herramientas adicionales si se usa un archivo JSON.
-- **Licencia**: Se incluye la licencia del proyecto (si se usa la licencia MIT).
-
-Este archivo `README.md` es completo, claro y proporciona todo lo que un usuario necesitaría para configurar y usar la acción correctamente en sus flujos de trabajo de GitHub Actions.
