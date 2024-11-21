@@ -1,4 +1,4 @@
-name: 'OpenAPI Generator Action'
+name: 'OpenAPI Client Generator Action'
 description: 'Generates OpenAPI documentation using OpenAPI Generator'
 author: 'diegoara96'
 inputs:
