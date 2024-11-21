@@ -17,8 +17,10 @@ jobs:
           url: 'https://petstore.swagger.io/v2/swagger.json'
           output-dir: './generated-docs'
           generator: 'html2'
-      - name: Upload OpenApi documentation
-        uses: actions/upload-artifact@v4
+      - name: Generar documentación OpenAPI desde URL
+        uses: ./
         with:
-          name: test.html
-          path: generated-docs/index.html
+          spec-file: 'spec.json'
+          output-dir: './generated-docs2'
+          generator: 'html'
+
