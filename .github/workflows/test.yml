@@ -11,16 +11,27 @@ jobs:
     steps:
       - name: Checkout del código
         uses: actions/checkout@v2
-      - name: Generar documentación OpenAPI desde URL
+      - name: Generate OpenAPI documentation from URL
         uses: ./
         with:
           url: 'https://petstore.swagger.io/v2/swagger.json'
           output-dir: './generated-docs'
           generator: 'html2'
-      - name: Generar documentación OpenAPI desde URL
+      - name: Generate OpenAPI documentation from json
         uses: ./
         with:
           spec-file: 'spec.json'
           output-dir: './generated-docs2'
           generator: 'html'
+
+      - name: Generate OpenAPI documentation from json with invalid generator
+        uses: ./
+        with:
+          spec-file: 'spec.json'
+          output-dir: './generated-docs2'
+          generator: 'sdfsdgsd'
+        continue-on-error: true
+      - name: Check if generator was invalid
+        if: steps.invalid-generator.outcome == 'success'
+        run: exit 1
 
