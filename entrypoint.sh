@@ -1,18 +1,24 @@
 #!/bin/bash
+
+URL=$1
+SPEC_FILE=$2
+OUTPUT_DIR=$3
+GENERATOR=$4
+
   apt update
   apt install -y curl jq maven
   mkdir -p ~/bin/openapitools
   curl https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/bin/utils/openapi-generator-cli.sh > ~/bin/openapitools/openapi-generator-cli
   chmod u+x ~/bin/openapitools/openapi-generator-cli
   export PATH=$PATH:~/bin/openapitools/
-if [ -n "$INPUT_URL" ]; then
+if [ -n "$URL" ]; then
   echo "Downloading the OpenAPI specification from the provided URL..."
-  curl -s $INPUT_URL -o spec.json
+  curl -s $URL -o spec.json
 fi
 
-if [ -n "$INPUT_SPEC_FILE" ]; then
-  echo "Using the provided JSON file: $INPUT_SPEC_FILE"
-  cp $INPUT_SPEC_FILE spec.json
+if [ -n "$SPEC_FILE" ]; then
+  echo "Using the provided JSON file: $SPEC_FILE"
+  cp $SPEC_FILE spec.json
 fi
 
 if [ ! -f spec.json ]; then
@@ -21,4 +27,4 @@ if [ ! -f spec.json ]; then
 fi
 
 echo "Generating documentation with OpenAPI Generator..."
-openapi-generator-cli generate -i spec.json -g $INPUT_GENERATOR -o $INPUT_OUTPUT_DIR
+openapi-generator-cli generate -i spec.json -g $GENERATOR -o $OUTPUT_DIR

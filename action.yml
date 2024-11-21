@@ -19,3 +19,8 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.url }}
+    - ${{ inputs.spec-file }}
+    - ${{ inputs.output-dir }}
+    - ${{ inputs.generator }}
